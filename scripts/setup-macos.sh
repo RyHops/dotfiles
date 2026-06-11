@@ -7,7 +7,7 @@ echo ""
 
 # --- Homebrew ---
 if ! command -v brew &>/dev/null; then
-    echo "[0/8] Installing Homebrew..."
+    echo "[0/7] Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     # Load brew into current session (Apple Silicon vs Intel)
     if [[ -f /opt/homebrew/bin/brew ]]; then
@@ -20,35 +20,31 @@ if ! command -v brew &>/dev/null; then
 fi
 
 # --- Core packages ---
-echo "[1/8] Installing core packages..."
+echo "[1/7] Installing core packages..."
 brew install git zsh tmux
 
 # --- Font ---
-echo "[2/8] Installing JetBrainsMono Nerd Font..."
+echo "[2/7] Installing JetBrainsMono Nerd Font..."
 brew install --cask font-jetbrains-mono-nerd-font
 
 # --- WezTerm ---
-echo "[3/8] Installing WezTerm..."
+echo "[3/7] Installing WezTerm..."
 brew install --cask wezterm
 
 # --- CLI tools ---
-echo "[4/8] Installing CLI tools (fzf, fd, eza, zoxide, bat, yazi)..."
+echo "[4/7] Installing CLI tools (fzf, fd, eza, zoxide, bat, yazi)..."
 brew install fzf fd eza zoxide bat yazi
 
 # --- zsh plugins ---
-echo "[5/8] Installing zsh plugins..."
+echo "[5/7] Installing zsh plugins..."
 brew install zsh-autosuggestions zsh-syntax-highlighting
 
-# --- Powerlevel10k ---
-echo "[6/8] Installing Powerlevel10k..."
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k 2>/dev/null || echo "  Already installed"
-
 # --- TPM ---
-echo "[7/8] Installing TPM (tmux plugin manager)..."
+echo "[6/7] Installing TPM (tmux plugin manager)..."
 git clone --depth=1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 2>/dev/null || echo "  Already installed"
 
 # --- Oh My Posh ---
-echo "[8/8] Installing Oh My Posh..."
+echo "[7/7] Installing Oh My Posh..."
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
 echo ""
@@ -77,8 +73,7 @@ echo ""
 echo "=== DONE! ==="
 echo ""
 echo "Next steps:"
-echo "  1. Open WezTerm"
-echo "  2. Powerlevel10k wizard will launch — pick 'rainbow' style, disable transient prompt"
-echo "  3. In tmux (Ctrl+a), press Shift+I to install plugins"
-echo "  4. Restart terminal to see all changes"
+echo "  1. Open WezTerm — Oh My Posh prompt (earthtone theme) loads automatically"
+echo "  2. In tmux (Ctrl+a), press Shift+I to install plugins"
+echo "  3. Restart terminal to see all changes"
 echo ""

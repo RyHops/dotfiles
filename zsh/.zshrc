@@ -1,14 +1,11 @@
 # --- PATH ---
 export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/.fzf/bin:$PATH"
 
-# Enable Powerlevel10k instant prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Oh My Posh prompt (earthtone theme — matches Windows)
+eval "$(oh-my-posh init zsh --config ~/.config/omp/earthtone-p10k.omp.json)"
 
-# Powerlevel10k theme
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Sparse lines — blank line before each prompt (like P10k sparse mode)
+precmd() { echo }
 
 # --- History ---
 HISTFILE=$HOME/.zhistory
@@ -69,10 +66,6 @@ alias lt="eza --icons=always --tree --level=2"
 # --- bat ---
 export BAT_THEME="Catppuccin Mocha"
 
-# --- zoxide ---
-eval "$(zoxide init zsh)"
-alias cd="z"
-
 # --- yazi (changes cwd on exit) ---
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -84,3 +77,29 @@ function y() {
 }
 
 export EDITOR="nvim"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# --- zoxide (MUST stay last in this file) ---
+# zoxide's doctor warns when anything reinitializes the shell after its init —
+# conda's shell hook above wraps `cd`, which clobbers the `cd=z` alias and
+# trips the warning. Keep this block as the LAST thing in .zshrc.
+# _ZO_DOCTOR=0: Claude Code's shell snapshot restores functions/aliases but not
+# zsh hook arrays, so the doctor false-alarms in agent shells. Config is correct.
+export _ZO_DOCTOR=0
+eval "$(zoxide init zsh)"
+alias cd="z"
+

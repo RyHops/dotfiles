@@ -27,12 +27,11 @@
     {
       "alignment": "left",
       "type": "prompt",
-      "newline": true,
       "segments": [
         {
           "type": "os",
           "style": "diamond",
-          "leading_diamond": "\u256d\u2500\ue0b2",
+          "leading_diamond": "\u256d\u2500\ue0b6",
           "foreground": "p:crust",
           "background": "p:surface2",
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} "
@@ -138,13 +137,13 @@
         {
           "type": "time",
           "style": "diamond",
-          "trailing_diamond": "\ue0b0\u2500\u256e",
+          "trailing_diamond": "\ue0b4\u2500\u256e",
           "invert_powerline": true,
           "foreground": "p:crust",
           "background": "p:surface2",
           "template": " {{ .CurrentDate | date .Format }} \uf017 ",
           "properties": {
-            "time_format": "15:04:05"
+            "time_format": "3:04 PM"
           }
         }
       ]
