@@ -13,7 +13,6 @@ Built from [Josean's WezTerm setup](https://www.josean.com/posts/how-to-setup-we
 | `wezterm` | Terminal emulator |
 | `tmux` | Terminal multiplexer |
 | `font-jetbrains-mono-nerd-font` | Nerd Font for icons |
-| `powerlevel10k` | zsh prompt theme |
 | `zsh-autosuggestions` | Ghost text suggestions |
 | `zsh-syntax-highlighting` | Command coloring |
 | `oh-my-posh` | Prompt engine (for consistency with Windows) |
@@ -73,10 +72,8 @@ chmod +x ~/dotfiles/scripts/setup-wsl.sh
 
 ## Post-setup
 
-1. Open WezTerm
-2. Powerlevel10k wizard launches — pick **rainbow** style, **disable transient prompt**
-3. In tmux, press `Ctrl+a` then `Shift+I` to install plugins
-4. Customize P10k colors in `~/.p10k.zsh` to match earthtone palette
+1. Open WezTerm — Oh My Posh prompt (earthtone theme) loads automatically on all platforms
+2. In tmux, press `Ctrl+a` then `Shift+I` to install plugins
 
 ## Color Palette
 
@@ -110,7 +107,7 @@ chmod +x ~/dotfiles/scripts/setup-wsl.sh
 ```
 dotfiles/
 ├── wezterm/.wezterm.lua          # Cross-platform WezTerm config
-├── tmux/tmux.conf                # tmux config (Catppuccin + vim-navigator)
+├── tmux/tmux.conf                # tmux config (Catppuccin + vim-navigator + Claude Code agent panes)
 ├── zsh/.zshrc                    # zsh config (shared, OS-aware)
 ├── powershell/                   # Windows PowerShell profile
 ├── omp/earthtone-p10k.omp.json  # Oh My Posh theme
