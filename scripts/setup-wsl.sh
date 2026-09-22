@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 echo "=== WSL2/Linux Dev Environment Setup ==="
